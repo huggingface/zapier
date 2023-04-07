@@ -1,25 +1,11 @@
 const perform = async (z, bundle) => {
-  const url =
-    'https://api-inference.huggingface.co/models/' + bundle.inputData.repo_id;
-  const options = {
-    url: url,
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'X-Wait-For-Model': true,
-      Authorization: `Bearer ${bundle.authData.key}`,
-    },
-    body: JSON.stringify({
-      inputs: bundle.inputData.text,
-    }),
-  };
-
-  return z.request(options).then((response) => {
-    response.throwForStatus();
-    const results = response.json;
-    return { data: results[0]['translation_text'] };
-  });
+  const { HfInference } = z.require('@huggingface/inference');
+  const hf = new HfInference(bundle.authData.key);
+  const result = await hf.translation({
+    model: bundle.inputData.repo_id,
+    inputs: bundle.inputData.text
+  })
+  return result
 };
 
 module.exports = {
@@ -46,8 +32,8 @@ module.exports = {
       },
     ],
     perform: perform,
-    sample: { data: 'Me llamo Carl y soy ingeniero.' },
-    outputFields: [{ key: 'data', label: 'Translated Text', type: 'text' }],
+    sample: { translation_text: 'Me llamo Carl y soy ingeniero.' },
+    outputFields: [{ key: 'translation_text', label: 'Translation Text', type: 'text' }],
   },
   key: 'translation',
   noun: 'Translation',
