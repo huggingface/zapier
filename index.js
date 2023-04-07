@@ -4,6 +4,7 @@ const textClassificationCreate = require('./creates/text_classification.js');
 const translationCreate = require('./creates/translation.js');
 const textGenerationCreate = require('./creates/text_generation.js');
 const summarizationCreate = require('./creates/summarization.js');
+const questionAnsweringCreate = require('./creates/question_answering.js');
 
 module.exports = {
   version: require('./package.json').version,
@@ -16,5 +17,6 @@ module.exports = {
     [translationCreate.key]: translationCreate,
     [textGenerationCreate.key]: textGenerationCreate,
     [summarizationCreate.key]: summarizationCreate,
+    [questionAnsweringCreate.key]: questionAnsweringCreate,
   },
 };
