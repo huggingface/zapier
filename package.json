@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@huggingface/hub": "0.5.0",
-    "@huggingface/inference": "^1.6.3",
+    "@huggingface/inference": "^1.7.1",
     "zapier-platform-core": "14.0.0"
   },
   "devDependencies": {
