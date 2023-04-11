@@ -1,4 +1,5 @@
 const authentication = require('./authentication');
+const automaticSpeechRecognitionCreate = require('./creates/automatic_speech_recognition.js');
 const docqaCreate = require('./creates/docqa.js');
 const textClassificationCreate = require('./creates/text_classification.js');
 const translationCreate = require('./creates/translation.js');
@@ -13,6 +14,7 @@ module.exports = {
   authentication: authentication,
   triggers: {},
   creates: {
+    [automaticSpeechRecognitionCreate.key]: automaticSpeechRecognitionCreate,
     [docqaCreate.key]: docqaCreate,
     [textClassificationCreate.key]: textClassificationCreate,
     [translationCreate.key]: translationCreate,
