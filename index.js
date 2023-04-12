@@ -7,6 +7,7 @@ const textGenerationCreate = require('./creates/text_generation.js');
 const summarizationCreate = require('./creates/summarization.js');
 const questionAnsweringCreate = require('./creates/question_answering.js');
 const zeroShotClassificationCreate = require('./creates/zero_shot_classification.js');
+const textToImageCreate = require('./creates/text_to_image.js');
 
 module.exports = {
   version: require('./package.json').version,
@@ -22,5 +23,6 @@ module.exports = {
     [summarizationCreate.key]: summarizationCreate,
     [questionAnsweringCreate.key]: questionAnsweringCreate,
     [zeroShotClassificationCreate.key]: zeroShotClassificationCreate,
+    [textToImageCreate.key]: textToImageCreate,
   },
 };
